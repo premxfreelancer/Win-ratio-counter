@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    button {
+      font-size: 20px;
+      margin: 10px;
+      padding: 15px 30px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #3498db;
+      color: #fff;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #counter-container {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="winButton" onclick="countWins()">Win</button>
+  <button id="lossButton" onclick="countLosses()">Loss</button>
+
+  <div id="counter-container">
+    Wins: <span id="winCount">0</span>
+    Losses: <span id="lossCount">0</span>
+    Win Percentage: <span id="winPercentage">0%</span>
+  </div>
+
+  <script>
+    let wins = 0;
+    let losses = 0;
+
+    function countWins() {
+      wins++;
+      updateCounters();
+    }
+
+    function countLosses() {
+      losses++;
+      updateCounters();
+    }
+
+    function updateCounters() {
+      const winCountElement = document.getElementById('winCount');
+      const lossCountElement = document.getElementById('lossCount');
+      const winPercentageElement = document.getElementById('winPercentage');
+
+      winCountElement.textContent = wins;
+      lossCountElement.textContent = losses;
+
+      const totalGames = wins + losses;
+      const winPercentage = totalGames === 0 ? 0 : (wins / totalGames) * 100;
+      winPercentageElement.textContent = winPercentage.toFixed(2) + '%';
+    }
+  </script>
+
+</body>
+</html>
